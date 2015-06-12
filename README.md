@@ -1,8 +1,15 @@
 # async-transaction
 
+async-transaction is a javascript library for creating transactions from asynchronous functions. Actions are executed in sequence, and in case of an error, rollback functions are executed in the reversed order.
 
+## Installation
 ```
-var transaction = require('transaction');
+npm install async-transaction
+```
+
+## Usage
+```
+var transaction = require('async-transaction');
 
 var sequence = [
 	{action: asyncfunc1, rollback: asyncrollbackfunc1},
@@ -19,5 +26,6 @@ transaction.run(sequence).then(function(res) {
 })
 
 ```
+actionfunctions (asyncfunc1-3) and rollback functions (asyncrollbackfunc1-2) must return a promise.
 
 Depends on Q-promises.
